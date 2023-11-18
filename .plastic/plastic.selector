@@ -1,0 +1,4 @@
+repository "Penniless Dungeon@dhktkql74@cloud"
+  path "/"
+    br "/main"
+    co "/main"
