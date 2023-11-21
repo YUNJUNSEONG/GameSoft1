@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    public GameObject roomPrefab; // 방을 나타내는 프리팹
-    public Material roomMaterial; // 방의 머티리얼
+    public GameObject roomPrefab; // Prefab for the room game object
+    public GameObject pathPrefab; // Prefab for the path game object
+    public int gridWidth = 7;
+    public int gridHeight = 15;
+
+    private List<List<GameObject>> mapGrid;
 
     void Start()
     {
@@ -14,47 +18,53 @@ public class MapGenerator : MonoBehaviour
 
     void GenerateMap()
     {
-        int gridSizeX = 15;
-        int gridSizeY = 7;
+        // Initialize the map grid
+        mapGrid = new List<List<GameObject>>();
 
-        for (int i = 0; i < 6; i++)
+        // Generate rooms
+        for (int x = 0; x < gridWidth; x++)
         {
-            GenerateFloor(gridSizeX, gridSizeY, i);
+            List<GameObject> column = new List<GameObject>();
+
+            for (int y = 0; y < gridHeight; y++)
+            {
+                Vector3 position = new Vector3(x, 0, y);
+                GameObject room = Instantiate(roomPrefab, position, Quaternion.identity);
+                column.Add(room);
+            }
+
+            mapGrid.Add(column);
+        }
+
+        // Generate paths
+        for (int x = 0; x < gridWidth - 1; x++)
+        {
+            for (int y = 0; y < gridHeight; y++)
+            {
+                ConnectRooms(mapGrid[x][y], mapGrid[x + 1][y]);
+            }
+        }
+
+        // Generate additional paths (randomly connecting floors)
+        for (int x = 0; x < gridWidth; x++)
+        {
+            for (int y = 0; y < gridHeight - 1; y++)
+            {
+                if (Random.Range(0f, 1f) < 0.5f)
+                {
+                    ConnectRooms(mapGrid[x][y], mapGrid[x][y + 1]);
+                }
+            }
         }
     }
 
-    void GenerateFloor(int sizeX, int sizeY, int floorNumber)
+    void ConnectRooms(GameObject room1, GameObject room2)
     {
-        for (int x = 0; x < sizeX; x++)
-        {
-            // 방 생성
-            GameObject newRoom = Instantiate(roomPrefab, new Vector3(x, floorNumber, 0), Quaternion.identity);
+        // Instantiate a path between two rooms
+        Vector3 pathPosition = (room1.transform.position + room2.transform.position) / 2f;
+        GameObject path = Instantiate(pathPrefab, pathPosition, Quaternion.identity);
 
-            // 방에 Renderer 컴포넌트가 없으면 추가
-            Renderer roomRenderer = newRoom.GetComponent<Renderer>();
-            if (roomRenderer == null)
-            {
-                roomRenderer = newRoom.AddComponent<Renderer>();
-            }
-
-            // 방의 머티리얼 설정
-            if (roomMaterial != null)
-            {
-                roomRenderer.material = roomMaterial;
-            }
-
-            // 무작위 색상 생성 및 설정
-            Color randomColor = Random.ColorHSV();
-            roomRenderer.material.color = randomColor;
-        }
-    }
-
-    // OnDrawGizmos 메서드를 추가하여 Gizmo를 설정
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.black; // 원하는 색상으로 설정
-
-        // Gizmo를 통해 시각적으로 확인할 내용 추가
-        Gizmos.DrawLine(transform.position, new Vector3(15, 6, 1)); // 적절한 크기와 위치로 수정
+        // Additional logic for handling the connection between rooms
+        // (e.g., adjusting doors, setting room attributes, etc.)
     }
 }
