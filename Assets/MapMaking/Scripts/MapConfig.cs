@@ -9,7 +9,7 @@ namespace Map
     [CreateAssetMenu]
     public class MapConfig : ScriptableObject
     {
-        public List<NodeBluePrint> bluePrints;
+        public List<NodeBluePrint> blueprints;
         public int GridWidth => Mathf.Max(numOfBossNodes.max, numOfStartingNodes.max);
 
         [Serializable]
@@ -17,6 +17,11 @@ namespace Map
         {
             public int min;
             public int max;
+
+            public int GetValue()
+            {
+                return UnityEngine.Random.Range(min, max + 1);
+            }
         }
 
         [Header("Number of Nodes")]

@@ -29,7 +29,7 @@ namespace Map
 
         public int GetValue()
         {
-            return Random.Range(min, max+1);
+            return Random.Range(min, max + 1);
         }
     }
 }

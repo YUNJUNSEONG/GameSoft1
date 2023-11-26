@@ -25,7 +25,7 @@ namespace map
             this.point = point;
         }
 
-        public void AddIncomig(Point p)
+        public void AddIncoming(Point p)
         {
             if (incoming.Any(element => element.Equals(p)))
                 return;
@@ -45,7 +45,7 @@ namespace map
             incoming.RemoveAll(element => element.Equals(p));
         }
 
-        public void RemocwOutgoing(Point p)
+        public void RemoveOutgoing(Point p)
         {
             outgoing.RemoveAll(element => element.Equals(p));
         }
