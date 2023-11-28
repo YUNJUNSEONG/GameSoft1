@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f77658907e8ae246815ea95957524b0, type: 3}
   m_Name: MapConfig
   m_EditorClassIdentifier: 
-  bluePrints: []
+  blueprints: []
   numOfBossNodes:
     min: 1
     max: 1
@@ -20,4 +20,81 @@ MonoBehaviour:
     min: 3
     max: 4
   extraPath: 0
-  layers: []
+  layers:
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 0
+      max: 0
+    nodesApartDistance: 2
+    randomizePosition: 0
+    randomizeNodes: 0
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0.587
+    randomizeNodes: 0.728
+  - nodeType: 4
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0.509
+    randomizeNodes: 0
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0.542
+    randomizeNodes: 0.739
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0.176
+    randomizeNodes: 0.739
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0.649
+    randomizeNodes: 0.739
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0
+    randomizeNodes: 0
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0.829
+    randomizeNodes: 0.739
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0.829
+    randomizeNodes: 0.739
+  - nodeType: 1
+    distanceFromPreviousLayer:
+      min: 2
+      max: 3
+    nodesApartDistance: 2
+    randomizePosition: 0.524
+    randomizeNodes: 0
+  - nodeType: 0
+    distanceFromPreviousLayer:
+      min: 4
+      max: 5
+    nodesApartDistance: 2
+    randomizePosition: 0.194
+    randomizeNodes: 0
