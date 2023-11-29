@@ -9,7 +9,7 @@ namespace Map
     {
         private static MapConfig config;
         private static readonly List<NodeType> RandomNodes = new List<NodeType>
-        { NodeType.Battle, NodeType.Event, NodeType.RestPlace, NodeType.Friend, NodeType.Treasure, NodeType.Boss};
+        { NodeType.Battle, NodeType.Event, NodeType.RestPlace, NodeType.Friend, NodeType.Treasure};
 
         private static List<float> layerDistances;
         private static List<List<Point>> paths;
@@ -42,10 +42,8 @@ namespace Map
 
             RemoveCrossConnections();
 
-            // select all the nodes with connections:
             var nodesList = nodes.SelectMany(n => n).Where(n => n.incoming.Count > 0 || n.outgoing.Count > 0).ToList();
 
-            // pick a random name of the boss level for this map:
             var bossNodeName = config.blueprints.Where(b => b.nodetype == NodeType.Boss).ToList().Random().name;
             return new Map(conf.name, bossNodeName, nodesList, new List<Point>());
 
@@ -56,7 +54,7 @@ namespace Map
             layerDistances = new List<float>();
             foreach (var layer in config.layers)
             {
-                layerDistances.Add(layer.distanceFromPreviousLayer.GetValue());
+                layerDistances.Add(layer.distanceFromPrewiousLayer.GetValue());
             }
         }
 
@@ -218,7 +216,7 @@ namespace Map
             var bossXs = candidateXs.Take(numOfBossNodes);
             var bossPoints = (from x in bossXs select new Point(x, finalNode.y-1)).ToList();
 
-            int numOfPaths = Mathf.Max(numOfStartingNodes, numOfBossNodes) + Mathf.Max(0, config.extraPath);
+            int numOfPaths = Mathf.Max(numOfStartingNodes, numOfBossNodes) + Mathf.Max(0, config.extraPaths);
             for (int i = 0; i< numOfPaths; i++)
             {
                 Point startingNode = startingPoints[i % numOfStartingNodes];

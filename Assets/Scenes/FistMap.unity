@@ -132,9 +132,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2828448267093462764, guid: c9eefdb3e39edc442a1e484679ea7f81, type: 3}
+      propertyPath: xSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828448267093462764, guid: c9eefdb3e39edc442a1e484679ea7f81, type: 3}
+      propertyPath: yOffset
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828448267093462764, guid: c9eefdb3e39edc442a1e484679ea7f81, type: 3}
       propertyPath: mapManager
       value: 
       objectReference: {fileID: 1560582715}
+    - target: {fileID: 2828448267093462764, guid: c9eefdb3e39edc442a1e484679ea7f81, type: 3}
+      propertyPath: orientation
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3008892394698281582, guid: c9eefdb3e39edc442a1e484679ea7f81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

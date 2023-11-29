@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f77658907e8ae246815ea95957524b0, type: 3}
   m_Name: MapConfig
   m_EditorClassIdentifier: 
-  blueprints: []
+  blueprints:
+  - {fileID: 11400000, guid: 887147e35ff759a41b4e2fa75c7579ad, type: 2}
+  - {fileID: 11400000, guid: 19ead116d121d2e40b27d53adf2a79f1, type: 2}
+  - {fileID: 11400000, guid: b09e520b30c59874188ffee5cd85dc6a, type: 2}
+  - {fileID: 11400000, guid: 229dc077f1553bf4ca69484f73e6ae7c, type: 2}
+  - {fileID: 11400000, guid: fe75a198a01d5774fa3356fe52b9fd65, type: 2}
+  - {fileID: 11400000, guid: 802e3c623542bb1479a75aa48606beb1, type: 2}
   numOfBossNodes:
-    min: 1
-    max: 1
+    min: 2
+    max: 3
   numOfStartingNodes:
-    min: 3
-    max: 4
+    min: 4
+    max: 5
   extraPath: 0
   layers:
   - nodeType: 0
@@ -68,8 +74,8 @@ MonoBehaviour:
       min: 2
       max: 3
     nodesApartDistance: 2
-    randomizePosition: 0
-    randomizeNodes: 0
+    randomizePosition: 0.176
+    randomizeNodes: 0.739
   - nodeType: 0
     distanceFromPreviousLayer:
       min: 2
@@ -89,7 +95,7 @@ MonoBehaviour:
       min: 2
       max: 3
     nodesApartDistance: 2
-    randomizePosition: 0.524
+    randomizePosition: 0.194
     randomizeNodes: 0
   - nodeType: 0
     distanceFromPreviousLayer:

@@ -1,8 +1,5 @@
 using Newtonsoft.Json;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Map
@@ -13,23 +10,20 @@ namespace Map
         public MapView view;
 
         public Map CurrentMap { get; private set; }
-        // Start is called before the first frame update
+
         void Start()
         {
             if (PlayerPrefs.HasKey("Map"))
             {
                 var mapJson = PlayerPrefs.GetString("Map");
                 var map = JsonConvert.DeserializeObject<Map>(mapJson);
-                // using this instead of .Contains()
                 if (map.path.Any(p => p.Equals(map.GetBossNode().point)))
                 {
-                    // payer has already reached the boss, generate a new map
                     GenerateNewMap();
                 }
                 else
                 {
                     CurrentMap = map;
-                    // player has not reached the boss yet, load the current map
                     view.ShowMap(map);
                 }
             }

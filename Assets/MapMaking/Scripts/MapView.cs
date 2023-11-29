@@ -19,7 +19,9 @@ namespace Map
         public MapManager mapManager;
         public MapOrientation orientation;
 
-        [Tooltip("List of all the MapConfig scriptable objects from the Assets folder that might be used to construct maps. " +"Similar to Acts in Slay The Spire (define general layout, types of bosses.)")]
+        [Tooltip(
+            "List of all the MapConfig scriptable objects from the Assets folder that might be used to construct maps. " +
+            "Similar to Acts in Slay The Spire (define general layout, types of bosses.)")]
         public List<MapConfig> allMapConfigs;
         public GameObject nodePrefab;
         [Tooltip("Offset of the start/end nodes of the map from the edges of the screen")]
@@ -51,7 +53,7 @@ namespace Map
         protected GameObject mapParent;
         private List<List<Point>> paths;
         private Camera cam;
-        // ALL nodes:
+
         public readonly List<MapNode> MapNodes = new List<MapNode>();
         protected readonly List<LineConnection> lineConnections = new List<LineConnection>();
 
@@ -153,19 +155,16 @@ namespace Map
 
         public void SetAttainableNodes()
         {
-            // first set all the nodes as unattainable/locked:
             foreach (var node in MapNodes)
                 node.SetState(NodeStates.Locked);
 
             if (mapManager.CurrentMap.path.Count == 0)
             {
-                // we have not started traveling on this map yet, set entire first layer as attainable:
                 foreach (var node in MapNodes.Where(n => n.Node.point.y == 0))
                     node.SetState(NodeStates.Attainable);
             }
             else
             {
-                // we have already started moving on this map, first highlight the path as visited:
                 foreach (var point in mapManager.CurrentMap.path)
                 {
                     var mapNode = GetNode(point);
@@ -176,7 +175,6 @@ namespace Map
                 var currentPoint = mapManager.CurrentMap.path[mapManager.CurrentMap.path.Count - 1];
                 var currentNode = mapManager.CurrentMap.GetNode(currentPoint);
 
-                // set all the nodes that we can travel to as attainable:
                 foreach (var point in currentNode.outgoing)
                 {
                     var mapNode = GetNode(point);
@@ -188,16 +186,12 @@ namespace Map
 
         public virtual void SetLineColors()
         {
-            // set all lines to grayed out first:
             foreach (var connection in lineConnections)
                 connection.SetColor(lineLockedColor);
 
-            // set all lines that are a part of the path to visited color:
-            // if we have not started moving on the map yet, leave everything as is:
             if (mapManager.CurrentMap.path.Count == 0)
                 return;
 
-            // in any case, we mark outgoing connections from the final node with visible/attainable color:
             var currentPoint = mapManager.CurrentMap.path[mapManager.CurrentMap.path.Count - 1];
             var currentNode = mapManager.CurrentMap.GetNode(currentPoint);
 
@@ -227,7 +221,6 @@ namespace Map
             var bossNode = MapNodes.FirstOrDefault(node => node.Node.nodeType == NodeType.Boss);
             Debug.Log("Map span in set orientation: " + span + " camera aspect: " + cam.aspect);
 
-            // setting first parent to be right in front of the camera first:
             firstParent.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, 0f);
             var offset = orientationOffset;
             switch (orientation)
@@ -247,13 +240,11 @@ namespace Map
                         scrollNonUi.yConstraints.min = 0;
                         scrollNonUi.yConstraints.max = span + 2f * offset;
                     }
-                    // factor in map span:
                     firstParent.transform.localPosition += new Vector3(0, -offset, 0);
                     break;
                 case MapOrientation.RightToLeft:
                     offset *= cam.aspect;
                     mapParent.transform.eulerAngles = new Vector3(0, 0, 90);
-                    // factor in map span:
                     firstParent.transform.localPosition -= new Vector3(offset, bossNode.transform.position.y, 0);
                     if (scrollNonUi != null)
                     {
@@ -303,11 +294,9 @@ namespace Map
             var toPoint = to.transform.position +
                           (from.transform.position - to.transform.position).normalized * offsetFromNodes;
 
-            // drawing lines in local space:
             lineObject.transform.position = fromPoint;
             lineRenderer.useWorldSpace = false;
 
-            // line renderer with 2 points only does not handle transparency properly:
             lineRenderer.positionCount = linePointsCount;
             for (var i = 0; i < linePointsCount; i++)
             {
@@ -325,7 +314,6 @@ namespace Map
         {
             return MapNodes.FirstOrDefault(n => n.Node.point.Equals(p));
         }
-
 
         protected MapConfig GetConfig(string configName)
         {
