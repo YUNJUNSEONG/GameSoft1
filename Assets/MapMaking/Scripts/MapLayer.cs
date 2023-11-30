@@ -9,8 +9,7 @@ namespace Map
     {
         [Tooltip("Default node for this map layer. If Randomize Nodes is 0, you will get this node 100% of the time")]
         public NodeType nodeType;
-
-        [OneLineWithHeader] public FloatMinMax distanceFromPrewiousLayer;
+        [OneLineWithHeader] public FloatMinMax distanceFromPreviousLayer;
         [Tooltip("Distance between the nodes on this layer")]
         public float nodesApartDistance;
         [Tooltip("If this is set to 0, nodes on this layer will appear in a straight line. Closer to 1f = more position randomization")]

@@ -54,7 +54,7 @@ namespace Map
             layerDistances = new List<float>();
             foreach (var layer in config.layers)
             {
-                layerDistances.Add(layer.distanceFromPrewiousLayer.GetValue());
+                layerDistances.Add(layer.distanceFromPreviousLayer.GetValue());
             }
         }
 
