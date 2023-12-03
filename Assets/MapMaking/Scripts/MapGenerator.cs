@@ -44,7 +44,7 @@ namespace Map
 
             var nodesList = nodes.SelectMany(n => n).Where(n => n.incoming.Count > 0 || n.outgoing.Count > 0).ToList();
 
-            var bossNodeName = config.blueprints.Where(b => b.nodetype == NodeType.Boss).ToList().Random().name;
+            var bossNodeName = config.nodeBlueprints.Where(b => b.nodetype == NodeType.Boss).ToList().Random().name;
             return new Map(conf.name, bossNodeName, nodesList, new List<Point>());
 
         }
@@ -73,8 +73,8 @@ namespace Map
 
             for(var i = 0; i < config.GridWidth; i++)
             {
-                var nodeType = Random.Range(offset, 1f) < layer.randomizeNodes ? GetRandomNode() : layer.nodeType;
-                var blueprintName = config.blueprints.Where(b => b.nodetype == nodeType).ToList().Random().name;
+                var nodeType = Random.Range(offset, 1f) < layer.randomizeNodes ? GetRandomNode() : layer.nodetype;
+                var blueprintName = config.nodeBlueprints.Where(b => b.nodetype == nodeType).ToList().Random().name;
                 var node = new Node(nodeType, blueprintName, new Point(i, layerIndex))
                 {
                     position = new Vector2(-offset + i * layer.nodesApartDistance, GetDistanceToLayer(layerIndex))

@@ -317,19 +317,44 @@ namespace Map
 
         protected MapConfig GetConfig(string configName)
         {
-            return allMapConfigs.FirstOrDefault(c => c.name == configName);
+            // allMapConfigs가 null이 아닌지 확인
+            if (allMapConfigs != null)
+            {
+                // null 확인을 포함한 FirstOrDefault 사용
+                MapConfig config = allMapConfigs.FirstOrDefault(c => c.name == configName);
+
+                // 만약 config가 null이면 적절히 처리
+                if (config != null)
+                {
+                    // config을 사용하는 작업 수행
+                }
+                else
+                {
+                    // config가 null일 때 처리
+                    // 로깅, 예외 던지기, 기본값 제공 등을 수행할 수 있습니다.
+                }
+
+                return config;
+            }
+            else
+            {
+                // allMapConfigs가 null일 때 처리
+                // 로깅, 예외 던지기, 기본값 제공 등을 수행할 수 있습니다.
+                return null;
+            }
         }
+
 
         protected NodeBluePrint GetBlueprint(NodeType type)
         {
             var config = GetConfig(mapManager.CurrentMap.configname);
-            return config.blueprints.FirstOrDefault(n => n.nodetype == type);
+            return config.nodeBlueprints.FirstOrDefault(n => n.nodetype == type);
         }
 
         protected NodeBluePrint GetBlueprint(string blueprintName)
         {
             var config = GetConfig(mapManager.CurrentMap.configname);
-            return config.blueprints.FirstOrDefault(n => n.name == blueprintName);
+            return config.nodeBlueprints.FirstOrDefault(n => n.name == blueprintName);
         }
     }
  }

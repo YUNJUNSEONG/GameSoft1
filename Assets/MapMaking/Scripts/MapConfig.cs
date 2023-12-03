@@ -1,6 +1,6 @@
-using OneLine;
+﻿using System.Collections.Generic;
 using Malee;
-using System.Collections.Generic;
+using OneLine;
 using UnityEngine;
 
 namespace Map
@@ -8,7 +8,7 @@ namespace Map
     [CreateAssetMenu]
     public class MapConfig : ScriptableObject
     {
-        public List<NodeBluePrint> blueprints;
+        public List<NodeBluePrint> nodeBlueprints;
         public int GridWidth => Mathf.Max(numOfBossNodes.max, numOfStartingNodes.max);
 
         [OneLineWithHeader]

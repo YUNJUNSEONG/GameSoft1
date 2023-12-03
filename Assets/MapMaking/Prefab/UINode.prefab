@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 0}
-  image: {fileID: 0}
+  image: {fileID: 9157617033550466808}
   visitedCircle: {fileID: 0}
-  circleImage: {fileID: 0}
-  visitedCircleImage: {fileID: 0}
+  circleImage: {fileID: 5128417264002792030}
+  visitedCircleImage: {fileID: 8146543702264454438}
 --- !u!1 &5457925393264097316
 GameObject:
   m_ObjectHideFlags: 0

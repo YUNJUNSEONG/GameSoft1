@@ -8,7 +8,7 @@ namespace Map
     public class MapLayer
     {
         [Tooltip("Default node for this map layer. If Randomize Nodes is 0, you will get this node 100% of the time")]
-        public NodeType nodeType;
+        public NodeType nodetype;
         [OneLineWithHeader] public FloatMinMax distanceFromPreviousLayer;
         [Tooltip("Distance between the nodes on this layer")]
         public float nodesApartDistance;
