@@ -71,9 +71,9 @@ namespace Map
             var nodesOnThisLayer = new List<Node>();
             var offset = layer.nodesApartDistance * config.GridWidth /2f;
 
-            for(var i = 0; i < config.GridWidth; i++)
+            for (var i = 0; i < config.GridWidth; i++)
             {
-                var nodeType = Random.Range(offset, 1f) < layer.randomizeNodes ? GetRandomNode() : layer.nodetype;
+                var nodeType = Random.Range(0f, 1f) < layer.randomizeNodes ? GetRandomNode() : layer.nodetype;
                 var blueprintName = config.nodeBlueprints.Where(b => b.nodetype == nodeType).ToList().Random().name;
                 var node = new Node(nodeType, blueprintName, new Point(i, layerIndex))
                 {

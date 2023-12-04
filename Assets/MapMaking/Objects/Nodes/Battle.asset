@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b00e29a55e45047a3c12388b8fac32, type: 3}
   m_Name: Battle
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: cd55a38498053e0449e8e641e70981cb, type: 3}
+  sprite: {fileID: 21300000, guid: 2a36ba44f3df1074090b9e8db278e437, type: 3}
   nodetype: 0
