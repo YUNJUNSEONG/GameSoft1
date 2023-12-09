@@ -13,12 +13,8 @@ namespace Map
         Friend,
         Boss
     }
-}
 
-namespace Map
-{
-    [CreateAssetMenu]
-
+    [CreateAssetMenu(fileName = "nodeData", menuName = "Scriptble Object/NodeData")]
     public class NodeBluePrint : ScriptableObject
     {
         public Sprite sprite;
