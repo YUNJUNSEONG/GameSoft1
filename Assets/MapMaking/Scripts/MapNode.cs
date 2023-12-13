@@ -24,11 +24,9 @@ namespace Map
         public SpriteRenderer visitedCircle;
         public Image circleImage;
         public Image visitedCircleImage;
-        [SerializeField]
-        private NodeBluePrint bluePrint;
-        public NodeBluePrint BluePrint { get; set; }
 
         public Node Node { get; private set; }
+        public NodeBluePrint BluePrint { get; private set; }
 
         private float initialScale;
         private const float HoverScaleFactor = 1.2f;

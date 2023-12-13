@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Map
 {
@@ -70,7 +69,6 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.Battle:
-                    SceneManager.LoadScene("BattleScene");
                     break;
                 case NodeType.Friend:
                     break;

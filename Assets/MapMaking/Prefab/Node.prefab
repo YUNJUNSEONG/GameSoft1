@@ -51,7 +51,6 @@ MonoBehaviour:
   visitedCircle: {fileID: 5331954444272913336}
   circleImage: {fileID: 0}
   visitedCircleImage: {fileID: 6762851593575739205}
-  bluePrint: {fileID: 0}
 --- !u!58 &3212499668234989604
 CircleCollider2D:
   m_ObjectHideFlags: 0
