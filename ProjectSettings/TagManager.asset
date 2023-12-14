@@ -9,6 +9,8 @@ TagManager:
   - Friend
   - Relax
   - Treasure
+  - Node
+  - Boss
   layers:
   - Default
   - TransparentFX
