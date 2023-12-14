@@ -20,10 +20,14 @@ public class ClickNode : MonoBehaviour, IPointerClickHandler
     public Text relaxTXT;
     public Text TreasureTXT;
     public bool isEnter;
+    public AudioClip enterNode;
+
+    AudioSource audioSource;
 
     int percent;
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -38,6 +42,7 @@ public class ClickNode : MonoBehaviour, IPointerClickHandler
             print("여긴가?");
             if (gameObject.tag == "Battle"/* && isEnter*/)
             {
+                audioSource.PlayOneShot(enterNode);
                 print("배틀?");
                 //isEnter = false;
                 //foreach (GameObject go in CheckEnd1)
@@ -52,9 +57,15 @@ public class ClickNode : MonoBehaviour, IPointerClickHandler
 
             }
             else if (gameObject.tag == "Boss" && isEnter)
+            {
+                audioSource.PlayOneShot(enterNode);
+
                 SceneManager.LoadScene("BattleScene");
+            }
             else if (gameObject.tag == "Relax")
             {
+                audioSource.PlayOneShot(enterNode);
+
                 RelaxActive.SetActive(true);
 
                 relaxTXT.text = "쉴 수 있는 곳을 찾았다\n 불침번을 세우고 쉴까?";
@@ -62,12 +73,16 @@ public class ClickNode : MonoBehaviour, IPointerClickHandler
             }
             else if (gameObject.tag == "Treasure")
             {
+                audioSource.PlayOneShot(enterNode);
+
                 TreasureActive.SetActive(true);
                 TreasureTXT.text = "보물 상자를 발견했다";
                 O_T.SetActive(true); X_T.SetActive(true);
             }
             else if(gameObject.tag == "Event")
             {
+                audioSource.PlayOneShot(enterNode);
+
                 percent = Random.Range(0, 100);
                 percent++;
                 if (percent >= 0 && 10 <= percent)
